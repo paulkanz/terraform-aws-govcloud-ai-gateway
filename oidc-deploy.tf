@@ -1,6 +1,6 @@
 # ai-platform :: GitHub Actions OIDC deploy role (CM-2 / CM-3 / AC-6)
 # Scoped deploy identity for `tofu apply` of THIS (system, environment), mirroring
-# the terraform-system/central-ci-cd pattern: no long-lived keys, the trust policy
+# the enterprise central-ci-cd pattern: no long-lived keys, the trust policy
 # binds the GitHub repo + Environment via the OIDC `sub` claim so an ai-platform-poc
 # workflow run cannot assume the prod role.
 #

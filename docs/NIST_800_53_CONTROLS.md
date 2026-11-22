@@ -7,7 +7,7 @@
 + policy config, Phoenix). NOT the application/retention layers (App-Integration-Epic).
 **Baseline:** NIST SP 800-53 Rev. 5, Moderate.
 **Account / Region:** 123456789012 / `us-gov-west-1` (GovCloud).
-**Reference:** docs/sdd-it-2962-ai-platform-foundation.md; canonical design
+**Reference:** docs/SDD.md; canonical design
 Confluence 3630825474 §31.
 
 ## Purpose and honesty note

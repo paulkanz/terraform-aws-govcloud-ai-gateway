@@ -47,7 +47,7 @@ Symptom: ALB reports unhealthy targets / no healthy targets.
    problem, not the gateway.
 2. Gateway down: check task health, `/health/liveliness` (200 expected), logs.
 3. Path down: verify the client peering + route (see the peering ids output;
-   the client-side return route lives in terraform-system/preprod-legacy). Confirm
+   the client-side return route lives in client VPC routing). Confirm
    the client VPC CIDR is in `allowed_client_cidrs` on the ALB SG.
 4. Users are unaffected if the app degrades to manual — confirm the app's
    circuit breaker engaged.

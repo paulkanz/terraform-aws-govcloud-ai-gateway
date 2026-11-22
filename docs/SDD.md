@@ -54,7 +54,7 @@ those consume, not their implementation.
   Transcribe engine option is architecturally available in-region — it is a
   cost/quality optimization vs. the Claude engine, not a availability gate.
 - **The OIDC deploy identity pattern already exists.**
-  `terraform-system/environments/central-ci-cd/oidc-github-actions.tf` provisions the
+  `central-ci-cd/oidc-github-actions.tf` provisions the
   GitHub Actions OIDC provider plus **one IAM role per (system, environment)**
   pair, scoped by the GitHub Environment `sub` claim (a data-platform-test run cannot assume
   data-platform-prod, nor another system's role). State at `terraform-state-west`,
@@ -77,8 +77,7 @@ those consume, not their implementation.
   (`bedrock-runtime-fips`, `transcribe-fips`) and FIPS TLS. Default to FIPS unless
   told otherwise. *Verify.*
 - **Where the AI platform state/repo lives (Q6).** Likely a new "system" under the
-  `opentofu-ecs-services` / `central-ci-cd` model, or a new `terraform-system`
-  environment. Decide before writing modules so state keys and OIDC roles are named
+  `opentofu-ecs-services` / `central-ci-cd` model, or a dedicated environment. Decide before writing modules so state keys and OIDC roles are named
   right.
 - **LiteLLM `store_prompts_in_spend_logs=false` actually suppresses bodies in this
   version.** Design-critical (§5). Verify empirically against the pinned image by
@@ -200,7 +199,7 @@ the path exists, so a delay affects integration, not development.
 ## 8. IaC, deploy identity, and repository placement
 
 - Modules in OpenTofu (matches the org's `opentofu-ecs-services`/`central-ci-cd`
-  direction and the Data-Platform/terraform-fargate ecosystem). Lock file pinned to
+  direction and the enterprise cloud platform ecosystem). Lock file pinned to
   `registry.terraform.io` — do NOT let an init flip it to `registry.opentofu.org`
   (see `docs/provider-registry-mismatch.md`; that mismatch already broke uat/tooling).
 - **Deploy identity:** reuse the `central-ci-cd` OIDC pattern — one IAM role per

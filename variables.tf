@@ -34,8 +34,7 @@ variable "allowed_client_cidrs" {
 
 # client_vpc_peers: one entry per client VPC that must reach the gateway. The
 # requester side of the peering + this side's route are created here; the client
-# side's return route is owned by whoever owns that VPC's route tables (for the
-# Swarm VPCs, that is terraform-system/preprod-legacy, mirroring data-platform_peerings).
+# side's return route is owned by whoever owns that VPC's route tables (configured via the respective client VPC route tables).
 variable "client_vpc_peers" {
   type = map(object({
     vpc_id       = string

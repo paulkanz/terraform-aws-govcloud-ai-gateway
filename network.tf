@@ -50,8 +50,7 @@ resource "aws_route_table_association" "private" {
 # One peering per client VPC that must reach the gateway. poc: docker-preprod
 # (10.4.0.0/16). The requester side lives here; the accepter route on the client
 # side (e.g. docker-preprod's route table -> this CIDR) is added in
-# terraform-system/preprod-legacy's data-platform_peerings-style map (the retrofit repo
-# owns the legacy Swarm route tables), mirroring the Data-Platform bridge pattern.
+# client VPC peering configuration, mirroring the core platform bridge pattern.
 resource "aws_vpc_peering_connection" "client" {
   for_each    = var.client_vpc_peers
   vpc_id      = aws_vpc.this.id
