@@ -1,0 +1,47 @@
+# ==============================================================================
+# AWS GovCloud Enterprise AI Platform (LiteLLM + Arize Phoenix Gateway)
+# Example Terraform Configuration Variables
+# ==============================================================================
+
+environment        = "prod"
+vpc_cidr           = "10.50.0.0/16"
+availability_zones = ["us-gov-west-1a", "us-gov-west-1b", "us-gov-west-1c"]
+
+# --- Client Reachability & VPC Peering ----------------------------------------
+allowed_client_cidrs = ["10.100.0.0/16"]
+
+client_vpc_peers = {
+  app-cluster = {
+    vpc_id       = "vpc-0123456789abcdef0"
+    cidr         = "10.100.0.0/16"
+    same_account = true
+  }
+}
+
+# --- Egress Lock: Approved AWS Bedrock GovCloud Models -------------------------
+approved_model_arns = [
+  "arn:aws-us-gov:bedrock:us-gov-west-1::foundation-model/anthropic.claude-sonnet-4-5-20250929-v1:0",
+  "arn:aws-us-gov:bedrock:us-gov-west-1::foundation-model/anthropic.claude-fable-5-1",
+]
+
+# FIPS 140-3 endpoint services for GovCloud compliance
+bedrock_endpoint_service    = "bedrock-runtime-fips"
+enable_transcribe           = false
+transcribe_endpoint_service = "transcribe-fips"
+
+# --- LiteLLM & Phoenix Service Configuration ---------------------------------
+litellm_desired_count = 2
+db_instance_count     = 2 # Production: 2 (Multi-AZ Aurora Serverless v2)
+
+# Internal ALB TLS Configuration
+internal_certificate_arn = "arn:aws-us-gov:acm:us-gov-west-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Private Route53 Hosted Zone for internal resolution
+private_zone_id    = "ZXXXXXXXXXXXXXXXXXXXX"
+litellm_host_label = "litellm-gateway"
+phoenix_host_label = "phoenix-observability"
+
+# --- Observability & Security ------------------------------------------------
+alert_email_subscribers = ["ops-alerts@example.com"]
+github_repo             = "paulkanz/terraform-aws-govcloud-ai-gateway"
+enable_config_rules     = true
