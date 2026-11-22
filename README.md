@@ -5,7 +5,7 @@
 [![Compliance Standard](https://img.shields.io/badge/Compliance-NIST%20SP%20800--53%20Rev%205%20%7C%20FedRAMP%20High-00C853.svg)](#nist-sp-800-53-rev-5-compliance-matrix)
 [![Testing](https://img.shields.io/badge/Tests-Terraform%20Test%20%2B%20Negative%20Egress%20Gates-blue.svg)](tests/)
 
-Production-grade Infrastructure as Code (Terraform) deploying a **FedRAMP High & NIST SP 800-53 Rev 5 compliant Enterprise AI Platform** in **AWS GovCloud (`us-gov-west-1`)**.
+Infrastructure as Code (Terraform) deploying an enterprise **FedRAMP High & NIST SP 800-53 Rev 5 compliant AI Platform** in **AWS GovCloud (`us-gov-west-1`)**.
 
 The platform provisions a centralized **LiteLLM Gateway** and self-hosted **Arize Phoenix** observability suite on **AWS ECS Fargate**, hardened with a hardware/network-enforced **Bedrock Egress Lock** that prevents unauthorized model calls, external data exfiltration, and unmonitored API spend.
 
@@ -72,7 +72,7 @@ graph TD
 
 ## 3. Comprehensive Engineering Documentation
 
-The repository includes formal, production-grade architectural specifications:
+The repository includes formal architectural and security specifications:
 
 * 📄 **[`docs/SDD.md`](docs/SDD.md):** Full System Design Document detailing architecture, blast-radius boundaries, VPC peering seams, and datastore topologies.
 * 🛡️ **[`docs/NIST_800_53_CONTROLS.md`](docs/NIST_800_53_CONTROLS.md):** Formal compliance traceability matrix mapping each resource to NIST SP 800-53 Rev 5 controls (AC, AU, CM, CP, IA, SC, SI).

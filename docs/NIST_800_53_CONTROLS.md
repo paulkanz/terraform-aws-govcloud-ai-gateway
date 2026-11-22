@@ -119,7 +119,7 @@ audit/response controls still to come.**
 monitoring gap is now largely closed — SNS-routed alarms with runbooks (AU-6),
 VPC flow logs, ALB access logs, Config drift rules (CM-2), and a scoped OIDC
 deploy identity that self-denies `bedrock:*` (CM-3/AC-6), on top of the already
-production-grade SC-7/AC-4 preventive core. The platform-layer control set is now
+SC-7/AC-4 preventive core. The platform-layer control set is now
 **substantially complete**; the remaining Moderate gaps — the **org-level SCP**,
 the **four CI tests** (evidence), and **CloudTrail/FIPS confirmation** — are org-
 scope config or test code, none of them account-local Terraform in this root.
